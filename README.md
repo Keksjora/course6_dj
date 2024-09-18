@@ -1,2 +1,4 @@
 TopShop django
+
+Приложение:
 Catalog
