@@ -1,0 +1,28 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Stefano Ricci",
+        "description": "Пиджак из шелка и кашемира",
+        "image": "",
+        "category": 1,
+        "price": 476000,
+        "created_at": "2024-09-21T14:39:24.133Z",
+        "updated_at": "2024-09-21T14:39:24.133Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Messika",
+        "description": "Колье",
+        "image": "",
+        "category": 3,
+        "price": 375000,
+        "created_at": "2024-09-21T14:43:20.319Z",
+        "updated_at": "2024-09-21T15:05:07.398Z"
+    }
+}
+]
