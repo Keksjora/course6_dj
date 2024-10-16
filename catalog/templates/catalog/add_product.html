@@ -1,10 +1,10 @@
-{% extends 'catalog/base.html' %}
+{% extends "catalog/base.html" %}
 
 {% block title %}Добавить новый товар{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>Добавить новый товар</h1>
+    <h1 class="display-4">Добавить новый товар</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
