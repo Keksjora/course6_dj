@@ -1,5 +1,9 @@
 from django.db import models
 
+from django.db.models import BooleanField
+
+from users.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name="Наименование")
@@ -33,6 +37,10 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Дата последнего изменения"
     )
+    publication_status = models.BooleanField(default=False)
+    owner = models.ForeignKey(
+        User, verbose_name="Владелец", blank=True, null=True, on_delete=models.SET_NULL
+    )
 
     def __str__(self):
         return self.name
@@ -41,3 +49,6 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name"]
+        permissions = [
+            ("can_unpublish_product", "can_unpublish_product"),
+        ]

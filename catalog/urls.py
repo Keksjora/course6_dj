@@ -8,6 +8,7 @@ from .views import (
     CatalogDetailView,
     CatalogHomeView,
     ProductDeleteView,
+    ProductUpdateView,
 )
 
 app_name = "catalog"
@@ -17,6 +18,9 @@ urlpatterns = [
     path("contacts/", CatalogContactsView.as_view(), name="contacts"),
     path("product/<int:pk>/", CatalogDetailView.as_view(), name="product_info"),
     path("add_product/", AddProductView.as_view(), name="add_product"),
+    path(
+        "product/<int:pk>/update/", ProductUpdateView.as_view(), name="product_update"
+    ),
     path(
         "product/<int:pk>/delete/", ProductDeleteView.as_view(), name="product_delete"
     ),
