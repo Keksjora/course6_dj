@@ -72,6 +72,8 @@ class ProductForm(forms.ModelForm):
     def clean_image(self):
         cleaned_data = super().clean()
         image = cleaned_data.get("image")
+        if image is None:
+            raise forms.ValidationError("Изображение не было загружено")
 
         if image.size > 5 * 1024 * 1024:
             raise forms.ValidationError("Размер файла не должен превышать 5 МБ.")
