@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import (
@@ -12,10 +12,10 @@ from django.views.generic import (
     UpdateView,
 )
 
-from catalog.models import Product, Category
+from catalog.models import Category, Product
 
 from .forms import ProductForm, ProductModeratorForm
-from .services import get_products_from_cache, get_products_by_category
+from .services import get_products_by_category, get_products_from_cache
 
 
 class CatalogHomeView(ListView):
@@ -85,7 +85,11 @@ class ProductsByCategoryView(View):
         category = get_object_or_404(Category, id=pk)
         products = get_products_by_category(pk)
 
-        return render(request, 'catalog/category_products.html', {'category': category, 'products': products})
+        return render(
+            request,
+            "catalog/category_products.html",
+            {"category": category, "products": products},
+        )
 
 
 class CategoryListView(ListView):

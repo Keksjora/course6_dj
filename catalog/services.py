@@ -1,10 +1,11 @@
+from django.core.cache import cache
+
 from catalog.models import Product
 from config.settings import CACHE_ENABLED
-from django.core.cache import cache
 
 
 def get_products_from_cache():
-    """"Получает данные продуктов из кеша"""
+    """ "Получает данные продуктов из кеша"""
     if not CACHE_ENABLED:
         return Product.objects.all()
     key = "products_list"
